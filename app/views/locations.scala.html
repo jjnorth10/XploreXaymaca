@@ -1,0 +1,56 @@
+@(locationForm: Form[models.Location])(id: Long)
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Product form"){
+	<h1>Product form</h1>
+	@if(id < 1) {
+		@helper.form(action = controllers.routes.Locations.saveForm(),'enctype -> "multipart/form-data"){
+		<fieldset>
+				<legend>Location (@locationForm("name").valueOr("New"))</legend>
+				@helper.inputText(locationForm("name"))
+				@helper.textarea(locationForm("description"))
+				@helper.inputText(locationForm("latitude"))
+				@helper.inputText(locationForm("longitude"))
+				@helper.inputText(locationForm("location_type_id"))
+				@helper.inputFile(locationForm("picture"))
+				@if(!locationForm("picture").valueOr("").isEmpty()) {
+					<div class="control-group">
+						<div class="controls">
+						
+					</div>
+				</div>
+				}
+		</fieldset>
+		
+		<input type="submit" class="btn btn-primary" value="Save">
+		<a class="btn" href="@routes.Application.index()">Cancel</a>
+	}
+	}@if(id > 0) {
+		@helper.form(action = controllers.routes.Locations.updateForm(id),'enctype -> "multipart/form-data"){
+		<fieldset>
+				<legend>Location (@locationForm("name").valueOr("New"))</legend>
+				@helper.inputText(locationForm("name"))
+				@helper.textarea(locationForm("description"))
+				@helper.inputText(locationForm("latitude"))
+				@helper.inputText(locationForm("longitude"))
+				@helper.inputText(locationForm("location_type_id"))
+				@helper.inputFile(locationForm("picture"))
+				@if(!locationForm("picture").valueOr("").isEmpty()) {
+					<div class="control-group">
+						<div class="controls">
+						
+					</div>
+				</div>
+				}
+		</fieldset>
+		
+		<input type="submit" class="btn btn-primary" value="Save">
+		<a class="btn" href="@routes.Application.index()">Cancel</a>
+	}
+	}
+		
+			
+		
+	
+}

@@ -7,3 +7,20 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET		/location/new				controllers.Locations.newLocation(name: String?=null,description: String?=null,latitude: Double?=0.0,longitude: Double?=0.0,tpe: Long?=0,image: String?=null)
+GET		/location/delete			controllers.Locations.deleteLocation(id: Long?=0)
+GET		/location/update			controllers.Locations.updateLocation(id: Long?=0,name: String?=null,description: String?=null,latitude: Double?=0.0,longitude: Double?=0.0,tpe: Long?=0,image: String?=null)
+GET		/location/list				controllers.Locations.list()
+GET		/location/find				controllers.Locations.find()
+GET		/location/addForm			controllers.Locations.addForm()
+POST	/location/saveForm			controllers.Locations.saveForm()
+POST	/location/updateForm		controllers.Locations.updateForm(id:Long?=0)
+GET		/location/editForm			controllers.Locations.editForm(id:Long?=0)
+GET		/location/picture			controllers.Locations.picture(id:Long?=0)
+
+
+GET		/location-type/new			controllers.LocationTypes.newLocationType(tpe: String?=null,description: String?=null)
+GET		/location-type/delete		controllers.LocationTypes.deleteLocationType(id: Long?=0)
+GET		/location-type/update		controllers.LocationTypes.updateLocationType(id: Long?=0,tpe: String?=null,description: String?=null)
+GET		/location-type/list			controllers.LocationTypes.list()
